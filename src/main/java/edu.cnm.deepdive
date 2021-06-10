@@ -1,0 +1,71 @@
+package edu.cnm.deepdive
+
+public class FizzBuzz {
+public static String fizzBuzz(int value) {
+
+    String result;
+ switch (value % 15) {
+      case 0:
+        result = "FizzBuzz";
+        break;
+      case 3:
+      case 6:
+      case 9:
+      case 12:
+        result = "Fizz";
+        break;
+      case 5:
+      case 10:
+        result = "Buzz";
+        break;
+      default:
+        result = String.valueOf(value);
+        break;
+    }
+    return result;
+  }
+}
+42 src/test/java/edu/cnm/deepdive/FizzBuzzTest.java
+@@ -0,0 +1,42 @@
+package edu.cnm.deepdive;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import javax.management.StringValueExp;
+import org.junit.jupiter.api.Test;
+
+class FizzBuzzTest {
+
+  static int[] fizzes = {6, 18, 33};
+  static int[] buzzes = {10, 25, 55};
+  static int[] fizzBuzzes = {30, 75, 105};
+  static int[] neithers = {11, 28, 43};
+
+  @Test
+  void fizzBuzz_fizz() {
+    for (int value : fizzes) {
+      assertEquals("Fizz", FizzBuzz.fizzBuzz(value));
+    }
+  }
+
+  @Test
+  void fizzBuzz_buzz() {
+    for (int value : buzzes) {
+      assertEquals("Buzz", FizzBuzz.fizzBuzz(value));
+    }
+  }
+
+  @Test
+  void fizzBuzz_fizzBuzz() {
+    for (int value : fizzBuzzes) {
+      assertEquals("FizzBuzz", FizzBuzz.fizzBuzz(value));
+    }
+  }
+
+  @Test
+  void fizzBuzz_neither() {
+    for (int value : neithers) {
+      assertEquals(String.valueOf(value), FizzBuzz.fizzBuzz(value));
+    }
+  }
+}
