@@ -1,56 +1,22 @@
-package edu.cnm.deepdive;
+plugins {
+    id 'java'
+}
 
-import static org.junit.jupiter.api.Assertions.*
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
-import org.junit.jupiter.api.Test
+group 'edu.cnm.deepdive'
+version '1.0-SNAPSHOT'
 
-class FizzBuzzTest {
+repositories {
+    mavenCentral()
+}
 
-    static int[] fizzes = {6, 18, 33};
-    static int[] buzzes = {10, 25, 55};
-    static int[] fizzBuzzes = {30, 75, 105};
-    static int[] neithers = {11, 28, 43};
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
 
-
-
-    @Test
-    void fizzBuzz() {
-
-        for (int value : fizzes) {
-            assertEquals("Fizz", FizzBuzz.fizzBuzz(6));
-        }
-
-
-    }
-
-    @Test
-    void fizzBuzz_buzz() {
-
-        for (int value : buzzes) {
-            assertEquals("Buzz", FizzBuzz.fizzBuzz(20));
-        }
-
-    }
-
-    @Test
-    void fizzBuzz_fizzBuzz() {
-
-        for (int value : fizzBuzzes) {
-            assertEquals("FizzBuzz", FizzBuzz.fizzBuzz(30));
-        }
-
-    }
-
-    @Test
-    void fizzBuzz_neither() {
-
-        for (int value : neithers) {
-
-            assertEquals(String.valueOf(value), FizzBuzz.fizzBuzz(value));
-
-            //assertEquals("11", FizzBuzz.fizzBuzz(11));
-        }
-
-    }
-
+test {
+    useJUnitPlatform()
 }
